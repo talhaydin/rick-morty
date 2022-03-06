@@ -1,23 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import DataList from './components/DataList';
 
 function App() {
+  const [data, setData] = useState({ results: [] });
+
+  useEffect(() => {
+    async function fetchData() {
+      const result = await axios('https://rickandmortyapi.com/api/character');
+      setData(result.data);
+    }
+    fetchData();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <DataList data={data}></DataList>
     </div>
   );
 }
