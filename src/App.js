@@ -8,6 +8,8 @@ function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [search, setSearch] = useState('');
 
+  document.title = 'Rick & Morty App'; /* sets the title */
+
   /* async function that pulls data from api */
   const fetchData = async () => {
     const result = await axios(
