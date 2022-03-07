@@ -1,22 +1,38 @@
-import './App.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import DataList from './components/DataList';
+import DataList from './components/DataList/DataList';
+import Header from './components/Header/Header';
 
 function App() {
   const [data, setData] = useState({ results: [] });
+  const [searchQuery, setSearchQuery] = useState('');
+  const [search, setSearch] = useState('');
+
+  const fetchData = async () => {
+    const result = await axios(
+      `https://rickandmortyapi.com/api/character/?name=${searchQuery}`
+    );
+    setData(result.data);
+  };
 
   useEffect(() => {
-    async function fetchData() {
-      const result = await axios('https://rickandmortyapi.com/api/character');
-      setData(result.data);
-    }
     fetchData();
-  }, []);
+  }, [search]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSearch(searchQuery);
+  };
 
   return (
     <div className="App">
-      <DataList data={data}></DataList>
+      <Header></Header>
+      <DataList
+        data={data}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        handleSubmit={handleSubmit}
+      ></DataList>
     </div>
   );
 }
