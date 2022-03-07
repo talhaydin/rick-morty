@@ -13,7 +13,9 @@ export default function DataList({
         <input
           type="text"
           value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          onChange={(e) =>
+            setSearchQuery(e.target.value)
+          } /* this sends the input value to app.js, where it's then saved in local state */
           className="searchForm__input"
           placeholder="Search your favourite character!"
         />

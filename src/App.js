@@ -8,6 +8,7 @@ function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [search, setSearch] = useState('');
 
+  /* async function that pulls data from api */
   const fetchData = async () => {
     const result = await axios(
       `https://rickandmortyapi.com/api/character/?name=${searchQuery}`
@@ -15,10 +16,12 @@ function App() {
     setData(result.data);
   };
 
+  /* lifecycle effect that runs the api call function */
   useEffect(() => {
     fetchData();
   }, [search]);
 
+  /* form handler, belongs to DataList component */
   const handleSubmit = (e) => {
     e.preventDefault();
     setSearch(searchQuery);
