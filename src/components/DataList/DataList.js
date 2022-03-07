@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 import './DataList.scss';
 
 export default function DataList({
