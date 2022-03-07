@@ -1,0 +1,15 @@
+.header {
+  height: 8vh;
+  background-color: rgb(56, 51, 136);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__banner {
+    width: 280px;
+    height: 160px;
+    filter: brightness(0) saturate(100%) invert(85%) sepia(69%) saturate(546%)
+      hue-rotate(31deg) brightness(93%) contrast(99%);
+  }
+}
